@@ -1,36 +1,33 @@
-#RGB LED Control via Serial - Arduino Code
-   ==========================================
-   This Arduino sketch allows you to control an RGB LED using
-   serial commands sent from the Arduino Serial Monitor (or any
-   serial interface).
 
-   Users can enter RGB values (0 to 255) for Red, Green, and Blue
-   to mix and display any color on the RGB LED.
+---
 
-   Example Input (via Serial Monitor): 
-   255 0 0   --> Red Color
-   0 255 0   --> Green Color
-   0 0 255   --> Blue Color
-   255 255 0 --> Yellow Color
-   255 255 255 --> White Color
+## Wiring
 
-  Wiring:
-   - Red pin of RGB LED to Arduino Pin 9 (with 220 ohm resistor)
-   - Green pin of RGB LED to Arduino Pin 10 (with 220 ohm resistor)
-   - Blue pin of RGB LED to Arduino Pin 11 (with 220 ohm resistor)
-   - Common Cathode pin to GND
+- Red pin of RGB LED to Arduino Pin 9 (with 220 ohm resistor)
+- Green pin of RGB LED to Arduino Pin 10 (with 220 ohm resistor)
+- Blue pin of RGB LED to Arduino Pin 11 (with 220 ohm resistor)
+- Common Cathode pin to GND
 
-   Notes:
-   - Works with common cathode RGB LEDs.
-   - Serial Monitor baud rate should be set to 9600.
-   - Each color value must be separated by a space.
+---
 
-   #Author: [ganeshmahske003]
-   Date: [07-03-2025]
+## Notes
 
-## CODE
-'''cpp
+- Works with **common cathode** RGB LEDs.
+- Serial Monitor baud rate should be set to **9600**.
+- Each color value must be separated by a **space**.
 
+---
+
+## Author
+
+**ganeshmahske003**  
+**Date:** 07-03-2025
+
+---
+
+## Code
+
+```cpp
 // Define the RGB pin connections to Arduino
 const int redPin = 9;      // Pin connected to the red leg of the RGB LED
 const int greenPin = 10;   // Pin connected to the green leg of the RGB LED
