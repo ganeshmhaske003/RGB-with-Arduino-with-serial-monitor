@@ -1,48 +1,80 @@
-# RGB-with-Arduino-with-serial-monitor
-basic RBG led with arduino with serial monitoring colour changing 
+/*
+   RGB LED Control via Serial - Arduino Code
+   ==========================================
+   This Arduino sketch allows you to control an RGB LED using
+   serial commands sent from the Arduino Serial Monitor (or any
+   serial interface).
 
-# Componets Required 
--Arduino Uno 
--Breadboard
--RGB LED
--jumper wire
--resistor
+   Users can enter RGB values (0 to 255) for Red, Green, and Blue
+   to mix and display any color on the RGB LED.
 
-## Code
-'''CPP
+   Example Input (via Serial Monitor): 
+   255 0 0   --> Red Color
+   0 255 0   --> Green Color
+   0 0 255   --> Blue Color
+   255 255 0 --> Yellow Color
+   255 255 255 --> White Color
 
-// Define pin numbers for the RGB LED
-const int redPin = 9;      // Pin connected to the red LED leg
-const int greenPin = 10;   // Pin connected to the green LED leg
-const int bluePin = 11;    // Pin connected to the blue LED leg
+   Wiring:
+   - Red pin of RGB LED to Arduino Pin 9 (with 220 ohm resistor)
+   - Green pin of RGB LED to Arduino Pin 10 (with 220 ohm resistor)
+   - Blue pin of RGB LED to Arduino Pin 11 (with 220 ohm resistor)
+   - Common Cathode pin to GND
+
+   Notes:
+   - Works with common cathode RGB LEDs.
+   - Serial Monitor baud rate should be set to 9600.
+   - Each color value must be separated by a space.
+
+   Author: [Your Name or GitHub Username]
+   Date: [Date]
+   License: MIT (optional)
+
+*/
+
+// Define the RGB pin connections to Arduino
+const int redPin = 9;      // Pin connected to the red leg of the RGB LED
+const int greenPin = 10;   // Pin connected to the green leg of the RGB LED
+const int bluePin = 11;    // Pin connected to the blue leg of the RGB LED
 
 void setup() {
-  // Set RGB pins as output so the Arduino can control them
+  // Set all RGB pins as output so Arduino can control the LED
   pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
   pinMode(bluePin, OUTPUT);
 
-  // Start serial communication at 9600 baud rate
+  // Start serial communication at 9600 baud
   Serial.begin(9600);
+
+  // Optional: Display a startup message in Serial Monitor
+  Serial.println("Enter RGB values (0-255) separated by spaces:");
 }
 
 void loop() {
-  // Check if there are at least 3 values available in the Serial buffer
+  // Check if there are at least 3 numbers available to read (R, G, B)
   if (Serial.available() >= 3) {
-    // Read 3 integer values (R, G, B) from Serial input
-    int r = Serial.parseInt();  // Read red value
-    int g = Serial.parseInt();  // Read green value
-    int b = Serial.parseInt();  // Read blue value
+    // Read the red, green, and blue values (each should be between 0-255)
+    int r = Serial.parseInt();  // Read red component
+    int g = Serial.parseInt();  // Read green component
+    int b = Serial.parseInt();  // Read blue component
 
-    // Call setColor() to apply the color to the RGB LED
+    // Set the RGB LED color
     setColor(r, g, b);
+
+    // Optional: Print the received values for confirmation
+    Serial.print("Set Color - R: ");
+    Serial.print(r);
+    Serial.print(" G: ");
+    Serial.print(g);
+    Serial.print(" B: ");
+    Serial.println(b);
   }
 }
 
-// Function to set the color of the RGB LED using PWM
-// Accepts 3 values: red, green, blue (each from 0 to 255)
+// Function to apply the specified color to the RGB LED
+// Inputs are red, green, and blue brightness values (0 to 255)
 void setColor(int red, int green, int blue) {
-  analogWrite(redPin, red);      // Set red LED brightness
-  analogWrite(greenPin, green);  // Set green LED brightness
-  analogWrite(bluePin, blue);    // Set blue LED brightness
+  analogWrite(redPin, red);      // Set brightness for red
+  analogWrite(greenPin, green);  // Set brightness for green
+  analogWrite(bluePin, blue);    // Set brightness for blue
 }
