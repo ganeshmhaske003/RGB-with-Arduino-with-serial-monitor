@@ -14,13 +14,13 @@
    255 255 0 --> Yellow Color
    255 255 255 --> White Color
 
-  # Wiring:
+  Wiring:
    - Red pin of RGB LED to Arduino Pin 9 (with 220 ohm resistor)
    - Green pin of RGB LED to Arduino Pin 10 (with 220 ohm resistor)
    - Blue pin of RGB LED to Arduino Pin 11 (with 220 ohm resistor)
    - Common Cathode pin to GND
 
-  # Notes:
+   Notes:
    - Works with common cathode RGB LEDs.
    - Serial Monitor baud rate should be set to 9600.
    - Each color value must be separated by a space.
