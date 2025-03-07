@@ -29,6 +29,7 @@
    Date: [07-03-2025]
 
 ## CODE
+'''cpp
 
 // Define the RGB pin connections to Arduino
 const int redPin = 9;      // Pin connected to the red leg of the RGB LED
