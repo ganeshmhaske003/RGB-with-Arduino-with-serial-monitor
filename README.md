@@ -1,4 +1,4 @@
-   #RGB LED Control via Serial - Arduino Code
+#RGB LED Control via Serial - Arduino Code
    ==========================================
    This Arduino sketch allows you to control an RGB LED using
    serial commands sent from the Arduino Serial Monitor (or any
@@ -28,7 +28,7 @@
    #Author: [ganeshmahske003]
    Date: [07-03-2025]
 
-##code
+## CODE
 
 // Define the RGB pin connections to Arduino
 const int redPin = 9;      // Pin connected to the red leg of the RGB LED
